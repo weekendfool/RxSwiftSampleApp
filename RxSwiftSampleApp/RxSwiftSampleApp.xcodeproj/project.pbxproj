@@ -18,6 +18,8 @@
 		8C926D18284A909E008512BC /* RxSwiftSampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C926D17284A909E008512BC /* RxSwiftSampleAppTests.swift */; };
 		8C926D22284A909E008512BC /* RxSwiftSampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C926D21284A909E008512BC /* RxSwiftSampleAppUITests.swift */; };
 		8C926D24284A909E008512BC /* RxSwiftSampleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C926D23284A909E008512BC /* RxSwiftSampleAppUITestsLaunchTests.swift */; };
+		8C926D31284A93DE008512BC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C926D30284A93DE008512BC /* ViewModel.swift */; };
+		8C926D33284A93F0008512BC /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C926D32284A93F0008512BC /* Model.swift */; };
 		B0C6546E9E77A28FB81652AB /* Pods_RxSwiftSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AB10D4A05B80204F7B086AD /* Pods_RxSwiftSampleApp.framework */; };
 		E1CA0EEBEE483B079F00896C /* Pods_RxSwiftSampleAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2B0D24CE609C380524D375 /* Pods_RxSwiftSampleAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -60,6 +62,8 @@
 		8C926D1D284A909E008512BC /* RxSwiftSampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwiftSampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C926D21284A909E008512BC /* RxSwiftSampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftSampleAppUITests.swift; sourceTree = "<group>"; };
 		8C926D23284A909E008512BC /* RxSwiftSampleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftSampleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8C926D30284A93DE008512BC /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		8C926D32284A93F0008512BC /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		9AB10D4A05B80204F7B086AD /* Pods_RxSwiftSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C573AC18793CAD0FFE05E878 /* Pods-RxSwiftSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftSampleApp.release.xcconfig"; path = "Target Support Files/Pods-RxSwiftSampleApp/Pods-RxSwiftSampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		F89153EAA08A300E0E0A3A31 /* Pods_RxSwiftSampleApp_RxSwiftSampleAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwiftSampleApp_RxSwiftSampleAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +135,8 @@
 				8C926CFD284A909B008512BC /* AppDelegate.swift */,
 				8C926CFF284A909B008512BC /* SceneDelegate.swift */,
 				8C926D01284A909B008512BC /* ViewController.swift */,
+				8C926D30284A93DE008512BC /* ViewModel.swift */,
+				8C926D32284A93F0008512BC /* Model.swift */,
 				8C926D03284A909B008512BC /* Main.storyboard */,
 				8C926D09284A909E008512BC /* Assets.xcassets */,
 				8C926D0B284A909E008512BC /* LaunchScreen.storyboard */,
@@ -167,7 +173,6 @@
 				898FD012C05CAF4A94DD9860 /* Pods-RxSwiftSampleAppTests.debug.xcconfig */,
 				554D33BA9E117662BA352ADE /* Pods-RxSwiftSampleAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -410,8 +415,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C926D31284A93DE008512BC /* ViewModel.swift in Sources */,
 				8C926D02284A909B008512BC /* ViewController.swift in Sources */,
 				8C926CFE284A909B008512BC /* AppDelegate.swift in Sources */,
+				8C926D33284A93F0008512BC /* Model.swift in Sources */,
 				8C926D00284A909B008512BC /* SceneDelegate.swift in Sources */,
 				8C926D08284A909B008512BC /* RxSwiftSampleApp.xcdatamodeld in Sources */,
 			);
