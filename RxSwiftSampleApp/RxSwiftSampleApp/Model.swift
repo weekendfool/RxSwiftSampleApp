@@ -11,6 +11,7 @@ import Foundation
 class Model {
     
     func addStar(text: String) -> String {
+        print("do")
         return text + "✨"
     }
     

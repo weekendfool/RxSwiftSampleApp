@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 class ViewController: UIViewController {
     
@@ -17,19 +18,31 @@ class ViewController: UIViewController {
     let model = Model()
     let disposeBag = DisposeBag()
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        bind()
+//        bind()
+//
+//        sampleTextField.rx.text.orEmpty
+//            .asDriver()
+//            .drive(sampleLabel.rx.text)
+//            .disposed(by: disposeBag)
+
+       bind2()
+        
+       
     }
     
     func bind() {
-        
         // input
         let viewModel = ViewModel(
             input: (
                 textFieldText: sampleTextField.rx.text.orEmpty.asDriver(),
-                button: sampleButton.rx.tap.asSignal()
+                button: sampleButton.rx.tap.asSignal(),
+                test: sampleTextField.rx.text.orEmpty.asObservable()
+                
             ),
             model: model
         )
@@ -38,6 +51,48 @@ class ViewController: UIViewController {
         viewModel.outputLabel
             .drive(sampleLabel.rx.text)
             .disposed(by: disposeBag)
+
+//        viewModel.outputLabel
+//            .asDriver()
+//            .drive(sampleLabel.rx.text)
+//            .disposed(by: disposeBag)
+////
+//        viewModel.outputLabel
+//            .asDriver(onErrorDriveWith: .empty())
+//            .drive(sampleLabel.rx.text)
+//            .disposed(by: disposeBag)
+
+//        viewModel.outputLabel
+//            .asObservable()
+//            .bind(to: sampleLabel.rx.text)
+//            .disposed(by: disposeBag)
+
+//        viewModel.outTest.asDriver(onErrorDriveWith: .empty())
+//            .drive(sampleLabel.rx.text)
+//            .disposed(by: disposeBag)
+
+        
+        //        viewModel.outTest
+        //            .bind(to: sampleLabel.rx.text)
+        //            .disposed(by: disposeBag)
+
+    }
+    
+    func bind2() {
+        var label: Driver<String>
+        
+        label = sampleTextField.rx.text.orEmpty
+            .asDriver()
+            .map { text in
+                print("viewText:\(text)")
+                return text
+            }
+        
+        label.drive(sampleLabel.rx.text)
+            .disposed(by: disposeBag)
+    }
+    
+    func bind3() {
         
     }
 
