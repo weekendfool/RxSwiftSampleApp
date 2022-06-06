@@ -27,54 +27,45 @@ class ViewModel {
         model: Model
     ) {
         let model = model
-        
-//        outTest = input.test.map { text -> String in
-//            print("text:\(text)")
-//            return text
-//        }
-        
-        outputLabel = input.test.map { text -> String in
-            print("text8:\(text)")
-            return text
-        }
-        .asDriver(onErrorDriveWith: .empty())
-        
-        outputLabel = input.test.asDriver(onErrorDriveWith: .empty()).map { text -> String in
-            print("text9:\(text)")
-            return text
-        }
-//        .asDriver(onErrorDriveWith: .empty())
-        
-
+ 
         outTest = input.textFieldText.asObservable().map { text in
-            print("text4: \(text)")
+            print("text: \(text)")
             return text
         }
 
-        outputLabel = input.textFieldText.map { text -> String in
-            print("text5:\(text)")
+        outputLabel = input.textFieldText.asObservable().map { text in
+            print("text2: \(text)")
             return text
-        }
-        .asDriver(onErrorDriveWith: .empty())
+        }.asDriver(onErrorDriveWith: .empty())
         
         outputLabel = input.textFieldText.asDriver().map { text in
-            print("text6:\(text)")
+            print("text3: \(text)")
             return text
         }
-       
         
-        
-        _ = input.textFieldText.map { text in
-            print("text3: \(text)")
+        outputLabel = Driver().map { input.textFieldText in
+            <#code#>
         }
         
-        outputLabel = input.textFieldText.map { text in
-            print("text2:\(text)")
+        
+        
+        outputLabel = input.test.map { text -> String in
+            print("text5: \(text)")
             return text
         }
         .asDriver(onErrorDriveWith: .empty())
         
-        
+//        outTest = input.test.map { text in
+//            print("tex6: \(text)")
+//            return text
+//        }
+//
+//        outputLabel = input.test.map { _ in
+//            print("text5:")
+//            return "text"
+//        }
+//        .asDriver()
+//
         
         
         outputLabel = input.button.map { _ -> String in
