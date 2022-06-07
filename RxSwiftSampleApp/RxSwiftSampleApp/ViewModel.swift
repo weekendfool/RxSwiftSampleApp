@@ -28,12 +28,12 @@ class ViewModel {
     ) {
         let model = model
  
-        outTest = input.textFieldText.asObservable().map { text in
+        outTest = input.textFieldText.asObservable().skip(1).map { text in
             print("text: \(text)")
             return text
-        }
+        }.share(replay: 1)
 
-        outputLabel = input.textFieldText.asObservable().map { text in
+        outputLabel = input.textFieldText.asObservable().map { text -> String in
             print("text2: \(text)")
             return text
         }.asDriver(onErrorDriveWith: .empty())
@@ -43,9 +43,10 @@ class ViewModel {
             return text
         }
         
-        outputLabel = Driver().map { input.textFieldText in
-            <#code#>
+        outputLabel = input.textFieldText.map{ text -> String in
+            return text + "$"
         }
+        .asDriver()
         
         
         
@@ -55,6 +56,7 @@ class ViewModel {
         }
         .asDriver(onErrorDriveWith: .empty())
         
+       
 //        outTest = input.test.map { text in
 //            print("tex6: \(text)")
 //            return text

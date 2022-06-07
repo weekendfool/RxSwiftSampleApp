@@ -22,16 +22,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-//        bind()
-//
+    
 //        sampleTextField.rx.text.orEmpty
 //            .asDriver()
 //            .drive(sampleLabel.rx.text)
 //            .disposed(by: disposeBag)
         // input
         
-       bind()
+       bind2()
         
        
     }
@@ -41,47 +39,59 @@ class ViewController: UIViewController {
         // input
         let viewModel = ViewModel(
             input: (
-                textFieldText: sampleTextField.rx.text.orEmpty.asDriver(),
-                button: sampleButton.rx.tap.asSignal(),
-                test: sampleTextField.rx.text.orEmpty.asObservable()
-                
+                textFieldText:
+                    sampleTextField
+                    .rx
+                    .text
+                    .orEmpty
+                    .asDriver(),
+                button:
+                    sampleButton
+                    .rx
+                    .tap
+                    .asSignal(),
+                test:
+                    sampleTextField
+                    .rx
+                    .text
+                    .orEmpty
+                    .asObservable()
             ),
             model: model
         )
         
         // output
+        
+        // x
+//        viewModel.outputLabel
+//            .drive(sampleLabel.rx.text)
+//            .disposed(by: disposeBag)
+//        // x
+//        viewModel.outputLabel
+//            .drive(sampleLabel.rx.text)
+//            .disposed(by: disposeBag)
+        // x
         viewModel.outputLabel
+            .drive { [weak self] text in
+                self?.sampleLabel.text = text
+            }
+            .disposed(by: disposeBag)
+        
+        
+        
+//        viewModel.outTest
+//            .bind(to: sampleLabel.rx.text)
+//            .disposed(by: disposeBag)
+//
+        viewModel.outTest
+            .asDriver(onErrorDriveWith: .empty())
             .drive(sampleLabel.rx.text)
             .disposed(by: disposeBag)
         
-//        viewModel.outputLabel
-//            .asObservable()
-//            .bind(to: sampleLabel.rx.text)
-//            .disposed(by: disposeBag)
-
-//        viewModel.outputLabel
-//            .asDriver()
-//            .drive(sampleLabel.rx.text)
-//            .disposed(by: disposeBag)
-////
-//        viewModel.outputLabel
-//            .asDriver(onErrorDriveWith: .empty())
-//            .drive(sampleLabel.rx.text)
-//            .disposed(by: disposeBag)
-
-//        viewModel.outputLabel
-//            .asObservable()
-//            .bind(to: sampleLabel.rx.text)
-//            .disposed(by: disposeBag)
-
-        viewModel.outTest.asDriver(onErrorDriveWith: .empty())
-            .drive(sampleLabel.rx.text)
+        viewModel.outputLabel
+            .asObservable()
+            .bind(to: sampleLabel.rx.text)
             .disposed(by: disposeBag)
-
-        
-//                viewModel.outTest
-//                    .bind(to: sampleLabel.rx.text)
-//                    .disposed(by: disposeBag)
 
     }
     
@@ -92,19 +102,61 @@ class ViewController: UIViewController {
         
         label =  sampleTextField.rx.text.orEmpty
                     .asDriver()
-                    .map { text in
-                        print("viewText:\(text)")
-                        return text
-                        }
+//                    .map { text in
+//                        print("viewText:\(text)")
+//                        return text
+//                        }
+
+        
+        let viewModel = ViewModel(
+            input: (
+                textFieldText:
+                    label,
+                button: sampleButton.rx.tap.asSignal(),
+                test: label.asObservable()
+                
+            ),
+            model: model
+        )
+        
+//        viewModel.outputLabel
+//            .drive(sampleLabel.rx.text)
+//            .disposed(by: disposeBag)
+        
+        viewModel.outTest
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(sampleLabel.rx.text)
+            .disposed(by: disposeBag)
                     
-        bind3(label: label)
+//        bind3(label: label)
     }
     
     func bind3(label: Driver<String>) {
         label.drive(sampleLabel.rx.text)
                    .disposed(by: disposeBag)
     }
+    
+    func bind4() {
+        
+    }
 
 
 }
+
+//extension ViewController: ViewModel2 {
+//    var input: (textField: Driver<String>, button: Signal<Void>) {
+////        textField = sampleTextField.rx.text.asDriver()
+//
+//    }
+//
+//    var output: (label: Driver<String>, ()) {
+//        <#code#>
+//    }
+//
+////    var input = ViewModel2.Input
+////    var output = ViewModel2.Output
+//
+//
+//
+//}
 
