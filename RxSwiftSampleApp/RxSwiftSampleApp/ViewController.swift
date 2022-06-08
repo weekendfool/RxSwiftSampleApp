@@ -20,6 +20,8 @@ class ViewController: UIViewController {
     
 //    var label: Driver<String>
     
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     
@@ -29,7 +31,7 @@ class ViewController: UIViewController {
 //            .disposed(by: disposeBag)
         // input
         
-       bind2()
+       bind4()
         
        
     }
@@ -87,7 +89,7 @@ class ViewController: UIViewController {
             .asDriver(onErrorDriveWith: .empty())
             .drive(sampleLabel.rx.text)
             .disposed(by: disposeBag)
-        
+
         viewModel.outputLabel
             .asObservable()
             .bind(to: sampleLabel.rx.text)
@@ -137,6 +139,27 @@ class ViewController: UIViewController {
     }
     
     func bind4() {
+        
+        let viewModel: ViewModel2Type = ViewModel2(
+            text: sampleTextField.rx.text.orEmpty.asDriver(),
+            tap: sampleButton.rx.tap.asSignal()
+        )
+        
+        // output
+//        viewModel.output.label
+//            .asDriver(onErrorDriveWith: .empty())
+//            .drive(sampleLabel.rx.text)
+//            .disposed(by: disposeBag)
+//
+        viewModel.output.label2
+            .drive(sampleLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+//        viewModel.output.label
+//            .asObservable()
+//            .bind(to: sampleLabel.rx.text)
+//            .disposed(by: disposeBag)
+//
         
     }
 

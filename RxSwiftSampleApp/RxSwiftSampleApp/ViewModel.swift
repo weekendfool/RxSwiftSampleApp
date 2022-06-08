@@ -56,7 +56,13 @@ class ViewModel {
         }
         .asDriver(onErrorDriveWith: .empty())
         
-       
+//        outputLabel = input.textFieldText.asObservable().flatMapLatest { text -> String in
+//            print("text6: \(text)")
+//            return text
+//        }
+//        .asDriver(onErrorDriveWith: .empty())
+//
+//
 //        outTest = input.test.map { text in
 //            print("tex6: \(text)")
 //            return text
